@@ -6,5 +6,6 @@ urlpatterns = [
     path('list/',views.list,name='list'),
     path('about/',views.about,name='about'),
     path('add_stock/',views.add_stock,name='add_stock'),
+    path('delete_ticker/<str:symbol>/',views.delete_ticker,name='delete_ticker')
 
 ]
