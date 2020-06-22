@@ -27,7 +27,15 @@ def list(request):
 	
 
 def about(request):
-	return render(request,'about.html',{})
+	import requests
+	import json
+
+	api_request = requests.get("https://cloud.iexapis.com/beta/ref-data/symbols?token=pk_ea80f000f706407abed481edb1ae1f8c")
+	try:
+		api = json.loads(api_request.content)			
+	except Exception as e:
+		api = "Error"
+	return render(request,'about.html',{'api':api})
 
 
 def add_stock(request):
@@ -39,6 +47,16 @@ def add_stock(request):
 		form = StockForm(request.POST or None)
 
 		if form.is_valid():
+			var = request.POST.get("ticker")
+			api_request = requests.get("https://cloud.iexapis.com/stable/stock/"+ str(var) + "/quote?token=pk_ea80f000f706407abed481edb1ae1f8c")
+
+			try:
+				api = json.loads(api_request.content)			
+			except Exception as e:
+				api = "Error"
+				messages.error(request,("Error in ticker name!"))
+				return redirect('add_stock')
+
 			form.save()
 			messages.success(request,("Stock has been Added"))
 			return redirect('add_stock')
