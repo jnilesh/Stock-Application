@@ -1,0 +1,23 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %} 
+Stocks | Add Stock
+{% endblock %}
+
+{% block content %}
+
+<h1>Add Stock </h1>
+
+<form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'add_stock' %}">
+	{% csrf_token %}
+	<input class="form-control mr-sm-2" type="search" placeholder="Enter ticker Name" aria-label="Search" name="ticker">
+	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add Stock</button>
+	<br>
+</form>
+
+	{% for item in ticker %}
+	{{ item }}
+	{% endfor %}
+{% endblock %}
