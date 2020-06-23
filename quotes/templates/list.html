@@ -16,7 +16,8 @@ Stocks | List
 	<p>There is an problem </p>
 	{% else %}
 
-		<h1>{{ api.companyName }}</h1><br>
+		<h1><a href="{% url 'detail_view' api.symbol %}">{{ api.companyName }}</a></h1><br>
+		
 		Latest Price: {{ api.latestPrice }}<br>
 		Previous Close: {{ api.previousClose }}<br>
 		Market CAp: {{ api.marketCap  }}<br>

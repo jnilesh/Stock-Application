@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} 
+Stocks | Detail View
+{% endblock %}
+
+{% block content %}
+
+{% if ticker %}
+	{{ ticker }}
+{% endif %}	
+
+{% if api %}
+	{% if api == "Error" %}
+	<p>There is an problem </p>
+	{% else %}
+		<table class="table table-striped">
+  			<thead class="thead-dark">
+    			<tr>
+      				<th scope="col">Key</th>
+      				<th scope="col">Value</th>
+    			</tr>
+  			</thead>
+			<tbody>
+			<h1>{{ api.companyName }}</h1><br>
+		{% for key, value in api.items %}
+		   <tr>
+      			<td>{{key}}</td>
+      			<td>{{value}}</td>
+    		</tr>
+		{% endfor %}
+	  		</tbody>
+		</table>
+	{% endif %}			 
+{% endif %}	
+
+
+{% endblock %}

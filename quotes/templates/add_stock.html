@@ -39,7 +39,7 @@ Stocks | Add Stock
   	{% for list_item in output %}
   <tbody>
     <tr>
-      <td>{{ list_item.companyName }}</td>
+      <td><a href="{% url 'detail_view' list_item.symbol %}">{{ list_item.companyName }}</a></td>
       <td>${{ list_item.latestPrice }}</td>
       <td>${{ list_item.previousClose }}</td>
       <td>${{ list_item.marketCap  }}</td>

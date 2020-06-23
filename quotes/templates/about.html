@@ -23,8 +23,8 @@ Stocks | All Symbols
 {% for item in api %}
 	<tbody>
 	    <tr>
-	    	<td>{{ item.symbol }}</td>
-			<td>{{ item.name }}</td>
+	    	<td><a href="{% url 'detail_view' item.symbol %}">{{ item.symbol }}</a></td>
+			<td><a href="{% url 'detail_view' item.symbol %}">{{ item.name }}</a></td>
 	    </tr>
 
 {% endfor %}

@@ -82,3 +82,21 @@ def delete_ticker(request,symbol):
 	item.delete()
 	messages.success(request,("Stock has been deleted!"))
 	return redirect('add_stock')
+
+
+def detail_view(request,symbol):
+	import requests
+	import json
+
+	if symbol:
+
+		api_request = requests.get("https://cloud.iexapis.com/stable/stock/"+ symbol + "/quote?token=pk_ea80f000f706407abed481edb1ae1f8c")
+
+		try:
+			api = json.loads(api_request.content)
+		except Exception as e:
+			api = "Error"
+		return render(request,'detail_view.html',{'api':api})	
+
+	else:
+		return render(request,'list.html',{'ticker':'You Shoul Not Be Here!'})
