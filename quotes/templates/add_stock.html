@@ -8,14 +8,17 @@ Stocks | Add Stock
 
 {% block content %}
 
-<h1>Add Stock </h1>
+<h1>Add Stocks To Compare</h1>
+<div class="float-right">
 
-<form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'add_stock' %}">
+<form class="form-inline my-2 my-lg-0 " method="POST" action="{% url 'add_stock' %}">
 	{% csrf_token %}
-	<input class="form-control mr-sm-2" type="search" placeholder="Enter ticker Name" aria-label="Search" name="ticker">
+	<input class="form-control mr-sm-2" type="search" placeholder="Enter Symbol" aria-label="Search" name="ticker">
 	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add Stock</button>
 	<br>
 </form>
+<br>
+</div>
 
 
 <br>

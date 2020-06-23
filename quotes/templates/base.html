@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     
     <link rel="stylesheet" href="{% static 'css/base_style.css' %}" >
-    
+    {% block link %} {% endblock %}
 
     <title>{% block title %} {% endblock %}</title>
   </head>
@@ -29,12 +29,12 @@
                <div class="menu">
                   <ul>
                      <li><a href="{% url 'home' %}">Home</a></li>
-                     <li><a href="{% url 'about' %}">About</a></li>
-                     <li><a href="{% url 'add_stock' %}">Add Stock</a></li>
+                     <li><a href="{% url 'about' %}">Symbols</a></li>
+                     <li><a href="{% url 'add_stock' %}">Quick Stock</a></li>
                      <li><form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'list' %}">
                      	{% csrf_token %}
-      					<input class="form-control mr-sm-2" type="search" placeholder="Enter Company Name" aria-label="Search" name="ticker">
-      					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Stock Quote</button>
+      					<input class="form-control mr-sm-2" type="search" placeholder="Enter Company Symbol" aria-label="Search" name="ticker">
+      					<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Show Quote</button>
     				</form></li>
                   </ul>
                   
