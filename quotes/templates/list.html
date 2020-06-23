@@ -15,15 +15,43 @@ Stocks | List
 	{% if api == "Error" %}
 	<p>There is an problem </p>
 	{% else %}
-
 		<h1><a href="{% url 'detail_view' api.symbol %}">{{ api.companyName }}</a></h1><br>
-		
-		Latest Price: {{ api.latestPrice }}<br>
-		Previous Close: {{ api.previousClose }}<br>
-		Market CAp: {{ api.marketCap  }}<br>
-		YTD Change: {{ api.ytdChange }}<br>
-		52 Week High: {{ api.week52High  }}<br>
-		52 Week Low: {{ api.week52Low }}<br>
+		<table class="table table-striped table-bordered">
+  			<thead class="thead-dark">
+    			<tr>
+      				<th scope="col">Key</th>
+      				<th scope="col">Value</th>
+    			</tr>
+  			</thead>
+			<tbody>
+				 <tr>
+				 	<td>Latest Price:</td>
+				 	<td>${{ api.latestPrice }}</td>
+				 </tr>
+				 <tr>
+				 	<td>Previous Close:</td>
+				 	<td>${{ api.previousClose }}</td>
+				 </tr>
+				 <tr>
+				 	<td>Market Cap:</td>
+				 	<td>${{ api.marketCap  }}</td>
+				 </tr>
+				 <tr>
+				 	<td>YTD Change:</td>
+				 	<td>{{ api.ytdChange }}%</td>
+				 </tr>
+				 <tr>
+				 	<td>52 Week High:</td>
+				 	<td>${{ api.week52High  }}</td>
+				 </tr>
+				 <tr>
+				 	<td>52 Week Low: </td>
+				 	<td>${{ api.week52Low }}</td>
+				 </tr>
+			</tbody>
+		</table>
+
+		<p>For more details <a href="{% url 'detail_view' api.symbol %}">Click Here</a></p>
 
 	{% endif %}			 
 {% endif %}	
